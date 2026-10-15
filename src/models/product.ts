@@ -1,6 +1,6 @@
 import { calculateDiscount } from "../utils/discountCalculator.js";
 import { calculateTax } from "../utils/taxCalculator.js";
-export class Product{
+export class productData{
     id: number; 
     title: string;
     price: number; 
@@ -21,8 +21,6 @@ export class Product{
         return this.price - calculateDiscount(this.price, this.discount);
     }
 
-    getTax(): number {
-        return calculateTax(this.discountPrice(), this.category);
     }
 
     displayDetails():string{
@@ -30,4 +28,4 @@ export class Product{
         let tax=this.getTax();
     return `ID: ${this.id} | Title: ${this.title} | Price: $ ${this.price.toFixed(2)}| Category: ${this.category} | Description: ${this.description } |Discount: ${this.discount}`;
     }
-}
+

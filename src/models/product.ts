@@ -6,7 +6,7 @@ export class productData{
     price: number; 
     category: string;
     description: string; 
-    discount:number
+    discount:number;
 
     constructor(id: number,  title: string, price: number, category:string, description:string, discount:number)
     {
@@ -23,9 +23,9 @@ export class productData{
 
     }
 
-    displayDetails():string{
-        let sale= this.discountPrice();
-        let tax=this.getTax();
-    return `ID: ${this.id} | Title: ${this.title} | Price: $ ${this.price.toFixed(2)}| Category: ${this.category} | Description: ${this.description } |Discount: ${this.discount}`;
+     displayDetails(): string {
+        const sale = this.discount();
+        const tax = this.getTax();
+        return `ID: ${this.id} | Title: ${this.title} | Category: ${this.category} | Price: $${this.price.toFixed(2)} | Discount: ${this.discountPercentage}% | Sale price: $${sale.toFixed(2)} | Tax: $${tax.toFixed(2)} | Total: $${(sale + tax).toFixed(2)}`;
     }
 

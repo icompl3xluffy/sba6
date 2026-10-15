@@ -9,15 +9,13 @@ interface ProductsResponse {
   skip: number;
   limit: number;
 }
-
-
-async function getJson<T>(url: string): Promise<T> {
-  let response: Response;
-
+export async function fetchProducts(limit: number = 5): Promise<Product[]> {
   try {
-    response = await fetch(url);
-  } catch {
-    throw new NetworkError(`Could not reach the server at ${url}`);
+    const response = await fetch(`${BASE_URL}?limit=${limit}`);
+
+    if (!response.ok) {
+      throw new NetworkError(`Server responded with status ${response.status}`);
+    }
   }
 
   if (!response.ok) {
@@ -30,6 +28,7 @@ async function getJson<T>(url: string): Promise<T> {
     throw new DataError("The server sent a response that could not be read");
   }
 }
+
 export async function fetchProductById(id: number): Promise<Product> {
   try {
     const response = await fetch(`${URL}/${id}`);

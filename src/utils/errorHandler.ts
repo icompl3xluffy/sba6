@@ -13,7 +13,7 @@ export class DataError extends Error {
 }
 
 
- export function handleError((error:______) => {
+ export function handleError((error:any) => {
       if (error instanceof NetworkError) {
         console.error("Network problem:", error.message);
       } else if (error instanceof DataError) {
@@ -21,7 +21,7 @@ export class DataError extends Error {
       } else {
         console.error("Unexpected error:", error);
       }
-    }
+    })
     .finally(() => {
       console.log("All attempted");
     });

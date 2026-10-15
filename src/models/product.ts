@@ -26,7 +26,8 @@ export class Product{
     }
 
     displayDetails():string{
-        lest sale -this
+        let sale= this.discountPrice();
+        let tax=this.getTax();
     return `ID: ${this.id} | Title: ${this.title} | Price: $ ${this.price.toFixed(2)}| Category: ${this.category} | Description: ${this.description } |Discount: ${this.discount}`;
     }
 }
